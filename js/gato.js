@@ -1,7 +1,7 @@
 // Variables globales
 let jugador = 'X';
 let maquina = 'O';
-let casillas = document.querySelectorAll('.casilla');
+let casillas = Array.from(document.querySelectorAll('.casilla'));
 let puntuacionJugador = 0;
 let puntuacionMaquina = 0;
 let turno = 0;
@@ -27,11 +27,11 @@ function jugar(casilla) {
             puntuacionJugador++;
             actualizarPuntuacion();
             guardarPuntuacion();
-            setTimeout(reiniciar, 1000); // Añadido setTimeout para reiniciar después de 1 segundo
+            setTimeout(reiniciar, 1000); // Reinicia después de 1 segundo
         } else if (turno < 9) {
-            setTimeout(maquinaJuega, 500); // Añadido setTimeout para que la máquina juegue después de 0.5 segundos
+            setTimeout(maquinaJuega, 500); // La máquina juega después de 0.5 segundos
         } else {
-            setTimeout(reiniciar, 1000); // Añadido setTimeout para reiniciar después de 1 segundo en caso de empate
+            setTimeout(reiniciar, 1000); // Reinicia después de 1 segundo en caso de empate
         }
     }
 }
@@ -39,16 +39,17 @@ function jugar(casilla) {
 // Función para que la máquina juegue
 function maquinaJuega() {
     let casillaAleatoria;
-    do {
-        casillaAleatoria = Math.floor(Math.random() * 9);
-    } while (casillas[casillaAleatoria].textContent !== '');
-    casillas[casillaAleatoria].textContent = maquina;
-    turno++;
-    if (verificarGanador()) {
-        puntuacionMaquina++;
-        actualizarPuntuacion();
-        guardarPuntuacion();
-        setTimeout(reiniciar, 1000); // Añadido setTimeout para reiniciar después de 1 segundo
+    let movimientosDisponibles = casillas.filter(casilla => casilla.textContent === '');
+    if (movimientosDisponibles.length > 0) {
+        casillaAleatoria = movimientosDisponibles[Math.floor(Math.random() * movimientosDisponibles.length)];
+        casillaAleatoria.textContent = maquina;
+        turno++;
+        if (verificarGanador()) {
+            puntuacionMaquina++;
+            actualizarPuntuacion();
+            guardarPuntuacion();
+            setTimeout(reiniciar, 1000); // Reinicia después de 1 segundo
+        }
     }
 }
 
@@ -65,9 +66,9 @@ function verificarGanador() {
         [casillas[2], casillas[4], casillas[6]]
     ];
     return combinaciones.some(combinacion => {
-        if (combinacion[0].textContent === combinacion[1].textContent && 
-            combinacion[1].textContent === combinacion[2].textContent && 
-            combinacion[0].textContent !== '') {
+        if (combinacion[0].textContent !== '' && 
+            combinacion[0].textContent === combinacion[1].textContent && 
+            combinacion[1].textContent === combinacion[2].textContent) {
             return true;
         }
         return false;
