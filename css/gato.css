@@ -1,0 +1,135 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000000;
+
+}
+
+header {
+  background-color: #151618;
+  color: #61dafb;
+  padding: 1.5em;
+  width: 99%;
+  height: 145px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  align-items: center;
+  justify-content: center
+}
+
+#gato{
+ display: flex;
+ justify-content: center;
+ height: 120px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  letter-spacing: 1px;
+  height: 20px;
+}
+
+#reiniciar {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 0.7em 1.5em;
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+}
+
+#reiniciar:hover {
+  background-color: #4eaed4;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  grid-gap: 15px;
+  margin-top: 1.5em;
+}
+
+.casilla {
+  width: 70px;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #282c34;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+ text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.casilla:hover {
+  background-color: #e8e8e8;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.puntuacion {
+  margin-top: 2.5em;
+}
+
+#puntuacion-jugador, #puntuacion-maquina {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  color: #61dafb;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .tablero {
+    grid-template-columns: repeat(3, 60px);
+    grid-gap: 10px;
+  }
+
+  .casilla {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  #reiniciar {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    text-align: center;
+
+  }
+
+  .btnn{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+}
+
