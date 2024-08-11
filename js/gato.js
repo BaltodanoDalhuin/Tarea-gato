@@ -103,3 +103,5 @@ casillas.forEach(casilla => casilla.addEventListener('click', () => jugar(casill
 window.onload = () => {
     cargarPuntuacion();
 };
+  
+
